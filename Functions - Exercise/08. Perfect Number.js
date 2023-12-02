@@ -1,19 +1,17 @@
-function perfectNumber(num) {
-    let sumProperDivisors = 0;
-
-    for (let divisor =1; divisor < num; divisor++) {
-        if (num % divisor == 0) {
-            sumProperDivisors += divisor;
-        } 
+function isPerfectNumber(num) {
+    let sumDivisors = 0;
+    for (let i = 1; i < num; i++) {
+        if (num % i === 0) {
+            sumDivisors += i;
+        }
     }
-
-    if (sumProperDivisors == num) {
-        console.log(`We have a perfect number!`);
+    if (sumDivisors === num) {
+        console.log("We have a perfect number!");
     } else {
-        console.log(`It\`s not so perfectNumber.`);
+        console.log("It's not so perfect.");
     }
 }
 
-perfectNumber(6);
-perfectNumber(28);
-perfectNumber(1236498);
+isPerfectNumber(6);
+isPerfectNumber(28);
+isPerfectNumber(1236498);

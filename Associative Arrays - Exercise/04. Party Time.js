@@ -1,26 +1,27 @@
-function partyTime(array) {
-    let guestList = [];
-    let partyGuests = [];
-
-    let partyIndex = array.indexOf('PARTY');
-    if (partyIndex !== -1) {
-        let leftSide = array.splice(0, partyIndex);
-        guestList.push(...leftSide);
-
-        let rightSide = array.splice(1);
-        partyGuests.push(...rightSide);
+function partyTime(input) {
+    let vips = [];
+    let regulars = [];
+    let person = input.shift();
+    while (person != 'PARTY') {
+        if (isNaN(Number(person[0]))) {
+            regulars.push(person);
+        } else {
+            vips.push(person);
+        }
+        person = input.shift();
     }
-
-    let guestNoCome = [];
-    for (let guest of guestList) {
-
-        if (!partyGuests.includes(guest)) {
-            guestNoCome.push(guest);
+    for (let comingGuest of input) {
+        if (vips.includes(comingGuest)) {
+            vips.splice(vips.indexOf(comingGuest), 1);
+        }
+        if (regulars.includes(comingGuest)) {
+            regulars.splice(regulars.indexOf(comingGuest), 1);
         }
     }
-
-    console.log(guestNoCome.length);
-    console.log(guestNoCome.sort().join('\n'));
+    console.log(vips.concat(regulars).length);
+    vips.concat(regulars).forEach((guest) => {
+        console.log(guest);
+    });
 }
 
 partyTime(['7IK9Yo0h',
