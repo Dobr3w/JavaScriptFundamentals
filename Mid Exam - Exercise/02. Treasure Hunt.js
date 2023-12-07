@@ -10,7 +10,7 @@ function hunt(arr) {
             tokens.filter(item => !loot.includes(item)).forEach(item => loot.unshift(item));
 
         } else if (action == "Drop") {
-            let inx = Number(tokens.shift());
+            let inx = tokens.shift();
 
             if (inx >= 0 && inx < loot.length) {
                 let del = loot.splice(inx, 1).shift();
