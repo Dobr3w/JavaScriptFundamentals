@@ -1,15 +1,19 @@
-function emp(arr) {
-    for (let empName of arr) {
-        let employee = {
-            name: empName,
-            personalNum: empName.length
-        };
+function employees(arr) {
+    for (let employeeName of arr) {
+        //Name: Silas Butler -- Personal Number: 12
+        let employees = {
+            name: employeeName,
+            num: employeeName.length,
+        }
 
-        console.log(`Name: ${employee.name} -- Personal Number: ${employee.personalNum}`);
+        console.log(`Name: ${employees.name} -- Personal Number: ${employees.num}`);
     }
 }
 
 
-
-emp(['Silas Butler','Adnaan Buckley','Juan Peterson','Brendan Villarreal']);
-emp(['Samuel Jackson','Will Smith','Bruce Willis','Tom Holland']);
+employees([
+    'Silas Butler',
+    'Adnaan Buckley',
+    'Juan Peterson',
+    'Brendan Villarreal'
+]);

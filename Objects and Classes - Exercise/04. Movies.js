@@ -1,32 +1,24 @@
-function movies(array) {
-
+function movies(arr) {
     let movies = [];
 
-    for (let command of array) {
-        if (command.includes("addMovie")) {
+    for (let currLine of arr) {
 
-            let movieName = command.split("addMovie ")[1];
-            let movieObj = { name: movieName };
-
+        if (currLine.includes('addMovie')) {
+            let movieName = currLine.split('addMovie ')[1];
+            let movieObj = {
+                name: movieName,
+            }
             movies.push(movieObj);
-
-        } else if (command.includes("directedBy")) {
-
-            let movieName = command.split(" directedBy ")[0];
-            let movieDirector = command.split(" directedBy ")[1];
-            let movieObj = { director: movieDirector };
-
+        } else if (currLine.includes('directedBy')) {
+            let [movieName, directorName] = currLine.split(' directedBy ');
             let movie = movies.find(movie => movie.name == movieName);
 
             if (movie) {
-                movie.director = movieDirector;
+                movie.director = directorName;
             }
 
-        } else if (command.includes("onDate")) {
-
-            let movieName = command.split(" onDate ")[0];
-            let movieDate = command.split(" onDate ")[1];
-
+        } else if (currLine.includes('onDate')) {
+            let [movieName, movieDate] = currLine.split(' onDate ');
             let movie = movies.find(movie => movie.name == movieName);
 
             if (movie) {
@@ -36,13 +28,14 @@ function movies(array) {
     }
 
     for (let movie of movies) {
-
         if (movie.name && movie.director && movie.date) {
-            console.log(JSON.stringify(movie));
+            let json = JSON.stringify(movie);
+            console.log(json);
         }
     }
 
 }
+
 
 movies([
     'addMovie Fast and Furious',
@@ -53,13 +46,4 @@ movies([
     'Fast and Furious onDate 30.07.2018',
     'Batman onDate 01.08.2018',
     'Fast and Furious directedBy Rob Cohen'
-]);
-
-movies([
-'addMovie The Avengers',
-'addMovie Superman',
-'The Avengers directedBy Anthony Russo',
-'The Avengers onDate 30.07.2010',
-'Captain America onDate 30.07.2010',
-'Captain America directedBy Joe Russo'
 ]);

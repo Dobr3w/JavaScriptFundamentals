@@ -1,34 +1,31 @@
-function store(stock, orderedProducts) {
-
+function store(array1, array2) {
     let product = {};
 
-    for (let i = 0; i < stock.length; i += 2) {
-        let productName = stock[i];
-        let productQuantity = Number(stock[i + 1]);
+    for (let i = 0; i < array1.length; i += 2) {
+        let productName = array1[i];
+        let qty = Number(array1[i + 1]);
 
-        product[productName] = productQuantity;
+        product[productName] = qty;
     }
 
-    for (let j = 0; j < orderedProducts.length; j += 2) {
-        let productName = orderedProducts[j];
-        let productQuantity = Number(orderedProducts[j + 1]);
+    for (let i = 0; i < array2.length; i += 2) {
+        let productName = array2[i];
+        let qty = Number(array2[i + 1]);
 
         if (productName in product) {
-            product[productName] += productQuantity;
+            product[productName] += qty;
         } else {
-            product[productName] = productQuantity;
+            product[productName] = qty;
         }
     }
 
-    let kvp = Object.entries(product);
-
-    for (let enrty of kvp) {
-        let productName = enrty[0];
-        let productQuantity = enrty[1];
-
-        console.log(`${productName} -> ${productQuantity}`);
+    for (let [key, value] of Object.entries(product)) {
+        console.log(`${key} -> ${value}`);
     }
-
 }
 
-store(['Chips', '5', 'CocaCola', '9', 'Bananas', '14', 'Pasta', '4', 'Beer', '2'], ['Flour', '44', 'Oil', '12', 'Pasta', '7', 'Tomatoes', '70', 'Bananas', '30']);
+store([
+    'Chips', '5', 'CocaCola', '9', 'Bananas',
+    '14', 'Pasta', '4', 'Beer', '2'],
+    ['Flour', '44', 'Oil', '12', 'Pasta', '7',
+        'Tomatoes', '70', 'Bananas', '30']);
